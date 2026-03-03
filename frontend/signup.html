@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>NexStore - Crear Cuenta</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="auth-page">
+    <div class="app-container">
+        <section class="auth-view animate-in">
+            <div class="auth-header">
+                <div class="logo">Nex<span>Store</span></div>
+                <h1>Crea tu Cuenta</h1>
+                <p>Paso 1: Información Personal</p>
+            </div>
+
+            <form id="signup-form" class="auth-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input type="text" id="reg-nombre" placeholder="" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Apellido</label>
+                        <input type="text" id="reg-apellido" placeholder="" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fa-solid fa-at"></i> Usuario</label>
+                    <input type="text" id="reg-usuario" placeholder="Ej: jeanph12" required>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fa-solid fa-map-location-dot"></i> Municipio</label>
+                    <select id="reg-municipio" required>
+                        <option value="" disabled selected>Selecciona tu municipio</option>
+                        <option value="andres-bello">Andrés Bello</option>
+                        <option value="bocono">Boconó</option>
+                        <option value="bolivar">Bolívar</option>
+                        <option value="candelaria">Candelaria</option>
+                        <option value="carache">Carache</option>
+                        <option value="carvajal">Carvajal</option>
+                        <option value="campo-elias">Campo Elías</option>
+                        <option value="escuque">Escuque</option>
+                        <option value="jm-marquez-canizales">José Felipe Márquez Cañizales</option>
+                        <option value="jv-campo-elias">Juan Vicente Campo Elías</option>
+                        <option value="la-ceiba">La Ceiba</option>
+                        <option value="miranda">Miranda</option>
+                        <option value="monte-carmelo">Monte Carmelo</option>
+                        <option value="motatan">Motatán</option>
+                        <option value="pampan">Pampán</option>
+                        <option value="pampanito">Pampanito</option>
+                        <option value="rafael-rangel">Rafael Rangel</option>
+                        <option value="sucre">Sucre</option>
+                        <option value="trujillo">Trujillo</option>
+                        <option value="urdaneta">Urdaneta</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fa-solid fa-lock"></i> Contraseña</label>
+                    <div class="password-input-container">
+                        <input type="password" id="reg-pass" placeholder="Mínimo 6 caracteres" required>
+                        <button type="button" class="toggle-password" id="toggle-p1"><i
+                                class="fa-solid fa-eye"></i></button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fa-solid fa-shield-check"></i> Confirmar Contraseña</label>
+                    <div class="password-input-container">
+                        <input type="password" id="reg-pass-confirm" placeholder="Repite tu contraseña" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-auth-submit">
+                    Siguiente Paso <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </form>
+
+            <footer class="auth-footer">
+                <p>¿Ya tienes una cuenta? <a href="#">Inicia sesión</a></p>
+            </footer>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('signup-form');
+            const toggle1 = document.getElementById('toggle-p1');
+
+            toggle1.onclick = () => {
+                const pass = document.getElementById('reg-pass');
+                const type = pass.type === 'password' ? 'text' : 'password';
+                pass.type = type;
+                toggle1.innerHTML = type === 'password' ? '<i class="fa-solid fa-eye"></i>' : '<i class="fa-solid fa-eye-slash"></i>';
+            };
+
+            form.onsubmit = (e) => {
+                e.preventDefault();
+                const pass = document.getElementById('reg-pass').value;
+                const confirm = document.getElementById('reg-pass-confirm').value;
+
+                if (pass !== confirm) {
+                    alert('Las contraseñas no coinciden');
+                    return;
+                }
+                if (pass.length < 6) {
+                    alert('La contraseña es muy corta');
+                    return;
+                }
+
+                // Save data for next step
+                localStorage.setItem('temp_name', document.getElementById('reg-nombre').value);
+                localStorage.setItem('temp_surname', document.getElementById('reg-apellido').value);
+                localStorage.setItem('temp_user', document.getElementById('reg-usuario').value);
+
+                window.location.href = 'verify.html';
+            };
+        });
+    </script>
+</body>
+
+</html>

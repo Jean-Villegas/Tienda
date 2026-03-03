@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>NexStore - Iniciar Sesión</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="auth-page">
+    <div class="app-container">
+        <section class="auth-view animate-in">
+            <div class="auth-header">
+                <div class="logo">Nex<span>Store</span></div>
+                <h1>Bienvenido de nuevo</h1>
+                <p>Ingresa tus credenciales para continuar</p>
+            </div>
+
+            <form id="login-form" class="auth-form">
+                <div class="form-group">
+                    <label><i class="fa-solid fa-at"></i> Usuario</label>
+                    <input type="text" id="login-usuario" placeholder="Tu usuario" required>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fa-solid fa-lock"></i> Contraseña</label>
+                    <div class="password-input-container">
+                        <input type="password" id="login-pass" placeholder="Tu contraseña" required>
+                        <button type="button" class="toggle-password" id="toggle-p-login"><i
+                                class="fa-solid fa-eye"></i></button>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-auth-submit">
+                    Iniciar Sesión <i class="fa-solid fa-right-to-bracket"></i>
+                </button>
+            </form>
+
+            <footer class="auth-footer">
+                <p>¿No tienes una cuenta? <a href="signup.html">Regístrate gratis</a></p>
+                <p style="margin-top: 20px;"><a href="index.html" style="color: var(--text-muted);"><i
+                            class="fa-solid fa-arrow-left"></i> Volver a la tienda</a></p>
+            </footer>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('login-form');
+            const toggle = document.getElementById('toggle-p-login');
+
+            toggle.onclick = () => {
+                const pass = document.getElementById('login-pass');
+                const type = pass.type === 'password' ? 'text' : 'password';
+                pass.type = type;
+                toggle.innerHTML = type === 'password' ? '<i class="fa-solid fa-eye"></i>' : '<i class="fa-solid fa-eye-slash"></i>';
+            };
+
+            form.onsubmit = (e) => {
+                e.preventDefault();
+                const user = document.getElementById('login-usuario').value;
+                // Simple simulation
+                localStorage.setItem('userName', user);
+                alert('¡Bienvenido, ' + user + '!');
+                window.location.href = 'index.html';
+            };
+        });
+    </script>
+</body>
+
+</html>
