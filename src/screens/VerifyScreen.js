@@ -1,27 +1,19 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity, KeyboardAvoidingView, Platform, ScrollView, TextInput } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { theme } from '../utils/theme';
+import { useState } from 'react';
+import { KeyboardAvoidingView, Platform, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import InputField from '../components/InputField';
 import PrimaryButton from '../components/PrimaryButton';
-<<<<<<< HEAD
 import { apiActualizarVerificacionUsuario } from '../services/api';
+import { theme } from '../utils/theme';
 
 export default function VerifyScreen({ navigation, route }) {
-=======
-
-export default function VerifyScreen({ navigation }) {
->>>>>>> 8d8bd5bf1d43fb7e6d77f4ac42fd508bce6bb573
     const [cedula, setCedula] = useState('');
     const [telefono, setTelefono] = useState('');
     const [otp, setOtp] = useState('');
     const [codeSent, setCodeSent] = useState(false);
-<<<<<<< HEAD
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const usuarioId = route?.params?.usuarioId;
-=======
->>>>>>> 8d8bd5bf1d43fb7e6d77f4ac42fd508bce6bb573
 
     const handleVerifyPhone = () => {
         if (telefono.length >= 10) {
@@ -32,7 +24,6 @@ export default function VerifyScreen({ navigation }) {
         }
     };
 
-<<<<<<< HEAD
     const handleComplete = async () => {
         if (!usuarioId) {
             alert('No se encontró el usuario a verificar.');
@@ -62,17 +53,6 @@ export default function VerifyScreen({ navigation }) {
         telefono.length < 10 ||
         !codeSent ||
         otp.length !== 4;
-
-=======
-    const handleComplete = () => {
-        alert('¡Verificación exitosa! Bienvenido a NexStore.');
-        navigation.reset({
-            index: 0,
-            routes: [{ name: 'MainApp' }],
-        });
-    };
-
->>>>>>> 8d8bd5bf1d43fb7e6d77f4ac42fd508bce6bb573
     return (
         <SafeAreaView style={styles.safeArea}>
             <KeyboardAvoidingView
@@ -83,11 +63,7 @@ export default function VerifyScreen({ navigation }) {
                     <View style={styles.header}>
                         <Text style={styles.logo}>Nex<Text style={styles.logoAccent}>Store</Text></Text>
                         <Text style={styles.title}>Verificación</Text>
-<<<<<<< HEAD
                         <Text style={styles.subtitle}>Paso 2: Verifica tus datos para poder comprar</Text>
-=======
-                        <Text style={styles.subtitle}>Paso 2: Datos de Identificación</Text>
->>>>>>> 8d8bd5bf1d43fb7e6d77f4ac42fd508bce6bb573
                     </View>
 
                     <View style={styles.formContainer}>
@@ -125,13 +101,9 @@ export default function VerifyScreen({ navigation }) {
                             </View>
                         </View>
 
-<<<<<<< HEAD
                         <Text style={styles.helperText}>
                             Usamos tu cédula y teléfono para darle más seguridad a tus compras y evitar fraudes.
                         </Text>
-
-=======
->>>>>>> 8d8bd5bf1d43fb7e6d77f4ac42fd508bce6bb573
                         {codeSent && (
                             <View style={styles.otpGroup}>
                                 <Text style={styles.label}>Código de Verificación</Text>
@@ -150,10 +122,7 @@ export default function VerifyScreen({ navigation }) {
                             title="Completar Registro "
                             icon={<Ionicons name="checkmark-circle" size={20} color={theme.colors.white} />}
                             onPress={handleComplete}
-<<<<<<< HEAD
                             disabled={isCompleteDisabled || isSubmitting}
-=======
->>>>>>> 8d8bd5bf1d43fb7e6d77f4ac42fd508bce6bb573
                             style={{ marginTop: 20 }}
                         />
                     </View>
@@ -190,7 +159,6 @@ const styles = StyleSheet.create({
     footer: { alignItems: 'center', marginTop: 30 },
     backButton: { flexDirection: 'row', gap: 5, alignItems: 'center' },
     footerText: { fontFamily: theme.fonts.regular, color: theme.colors.textMain, textDecorationLine: 'underline' }
-<<<<<<< HEAD
     ,
     helperText: {
         marginBottom: 20,
@@ -198,6 +166,4 @@ const styles = StyleSheet.create({
         fontFamily: theme.fonts.regular,
         color: theme.colors.textMuted,
     }
-=======
->>>>>>> 8d8bd5bf1d43fb7e6d77f4ac42fd508bce6bb573
 });

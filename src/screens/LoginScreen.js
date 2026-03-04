@@ -1,19 +1,15 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { theme } from '../utils/theme';
+import { useState } from 'react';
+import { KeyboardAvoidingView, Platform, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import InputField from '../components/InputField';
 import PrimaryButton from '../components/PrimaryButton';
-<<<<<<< HEAD
 import { apiLogin } from '../services/api';
-=======
->>>>>>> 8d8bd5bf1d43fb7e6d77f4ac42fd508bce6bb573
+import { theme } from '../utils/theme';
 
 export default function LoginScreen({ navigation }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [secureText, setSecureText] = useState(true);
-<<<<<<< HEAD
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const isLoginDisabled = !username.trim() || !password.trim();
@@ -37,14 +33,6 @@ export default function LoginScreen({ navigation }) {
         } finally {
             setIsSubmitting(false);
         }
-=======
-
-    const isLoginDisabled = !username.trim() || !password.trim();
-
-    const handleLogin = () => {
-        // Por ahora, navega directamente a la app principal sin validar credenciales
-        navigation.replace('MainApp');
->>>>>>> 8d8bd5bf1d43fb7e6d77f4ac42fd508bce6bb573
     };
 
     return (
@@ -84,11 +72,7 @@ export default function LoginScreen({ navigation }) {
                             title="Iniciar Sesión "
                             icon={<Ionicons name="log-in-outline" size={20} color={theme.colors.white} />}
                             onPress={handleLogin}
-<<<<<<< HEAD
                             disabled={isLoginDisabled || isSubmitting}
-=======
-                            disabled={isLoginDisabled}
->>>>>>> 8d8bd5bf1d43fb7e6d77f4ac42fd508bce6bb573
                         />
                     </View>
 

@@ -1,8 +1,3 @@
-import React, { useEffect, useState } from 'react';
-import { StatusBar } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import * as Font from 'expo-font';
 import {
     Outfit_300Light,
     Outfit_400Regular,
@@ -10,17 +5,19 @@ import {
     Outfit_600SemiBold,
     Outfit_700Bold
 } from '@expo-google-fonts/outfit';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import * as Font from 'expo-font';
+import { useEffect, useState } from 'react';
+import { StatusBar } from 'react-native';
 
-import LoginScreen from './src/screens/LoginScreen';
-import SignupScreen from './src/screens/SignupScreen';
-import VerifyScreen from './src/screens/VerifyScreen';
 import MainAppNavigator from './src/navigation/MainAppNavigator';
-import VendorDashboardScreen from './src/screens/VendorDashboardScreen';
-import ProductDetailScreen from './src/screens/ProductDetailScreen';
-<<<<<<< HEAD
 import AdminDashboardScreen from './src/screens/AdminDashboardScreen';
-=======
->>>>>>> 8d8bd5bf1d43fb7e6d77f4ac42fd508bce6bb573
+import LoginScreen from './src/screens/LoginScreen';
+import ProductDetailScreen from './src/screens/ProductDetailScreen';
+import SignupScreen from './src/screens/SignupScreen';
+import VendorDashboardScreen from './src/screens/VendorDashboardScreen';
+import VerifyScreen from './src/screens/VerifyScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -54,10 +51,7 @@ export default function App() {
                 <Stack.Screen name="Verify" component={VerifyScreen} />
                 <Stack.Screen name="MainApp" component={MainAppNavigator} />
                 <Stack.Screen name="VendorDashboard" component={VendorDashboardScreen} />
-<<<<<<< HEAD
                 <Stack.Screen name="AdminDashboard" component={AdminDashboardScreen} />
-=======
->>>>>>> 8d8bd5bf1d43fb7e6d77f4ac42fd508bce6bb573
                 <Stack.Screen name="ProductDetail" component={ProductDetailScreen} />
             </Stack.Navigator>
         </NavigationContainer>
