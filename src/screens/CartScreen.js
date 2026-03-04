@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< HEAD
 import { View, Text, StyleSheet, SafeAreaView, ScrollView, Alert } from 'react-native';
 import { theme } from '../utils/theme';
 import PrimaryButton from '../components/PrimaryButton';
@@ -42,6 +43,13 @@ export default function CartScreen({ navigation }) {
         Alert.alert('Pago', 'Aquí iría el flujo real de pago.');
     };
 
+=======
+import { View, Text, StyleSheet, SafeAreaView, ScrollView } from 'react-native';
+import { theme } from '../utils/theme';
+import PrimaryButton from '../components/PrimaryButton';
+
+export default function CartScreen() {
+>>>>>>> 8d8bd5bf1d43fb7e6d77f4ac42fd508bce6bb573
     return (
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.header}>
@@ -64,7 +72,11 @@ export default function CartScreen({ navigation }) {
                     <Text style={styles.totalLabel}>Total</Text>
                     <Text style={styles.totalValue}>$0.00</Text>
                 </View>
+<<<<<<< HEAD
                 <PrimaryButton title="Pagar Ahora" onPress={handlePay} />
+=======
+                <PrimaryButton title="Pagar Ahora" onPress={() => { }} />
+>>>>>>> 8d8bd5bf1d43fb7e6d77f4ac42fd508bce6bb573
             </View>
         </SafeAreaView>
     );

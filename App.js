@@ -17,7 +17,10 @@ import VerifyScreen from './src/screens/VerifyScreen';
 import MainAppNavigator from './src/navigation/MainAppNavigator';
 import VendorDashboardScreen from './src/screens/VendorDashboardScreen';
 import ProductDetailScreen from './src/screens/ProductDetailScreen';
+<<<<<<< HEAD
 import AdminDashboardScreen from './src/screens/AdminDashboardScreen';
+=======
+>>>>>>> 8d8bd5bf1d43fb7e6d77f4ac42fd508bce6bb573
 
 const Stack = createNativeStackNavigator();
 
@@ -51,7 +54,10 @@ export default function App() {
                 <Stack.Screen name="Verify" component={VerifyScreen} />
                 <Stack.Screen name="MainApp" component={MainAppNavigator} />
                 <Stack.Screen name="VendorDashboard" component={VendorDashboardScreen} />
+<<<<<<< HEAD
                 <Stack.Screen name="AdminDashboard" component={AdminDashboardScreen} />
+=======
+>>>>>>> 8d8bd5bf1d43fb7e6d77f4ac42fd508bce6bb573
                 <Stack.Screen name="ProductDetail" component={ProductDetailScreen} />
             </Stack.Navigator>
         </NavigationContainer>
