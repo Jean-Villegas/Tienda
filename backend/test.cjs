@@ -1,0 +1,1 @@
+const data = {nombre:'T', apellido:'T', usuario:'t', municipioNombre:'Boconó', passwordHash:'123', telefono:'123', cedula:'123'}; fetch('http://localhost:4001/auth/signup', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)}).then(r=>r.json()).then(console.log).catch(console.error);
