@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>NexStore - Verificación</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="auth-page">
+    <div class="app-container">
+        <section class="auth-view animate-in">
+            <div class="auth-header">
+                <div class="logo">Nex<span>Store</span></div>
+                <h1>Verificación</h1>
+                <p>Paso 2: Datos de Identificación</p>
+            </div>
+
+            <form id="verify-form" class="auth-form">
+                <div class="form-group">
+                    <label><i class="fa-solid fa-id-card"></i> Cédula</label>
+                    <input type="number" id="reg-cedula" placeholder="12345678" required>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fa-solid fa-phone"></i> Teléfono</label>
+                    <div class="phone-input-container">
+                        <input type="tel" id="reg-telefono" placeholder="04121234567" required>
+                        <button type="button" id="standalone-verify-btn">Verificar</button>
+                    </div>
+                </div>
+
+                <div id="standalone-otp-group" class="form-group hidden animate-in">
+                    <label>Código de Verificación</label>
+                    <input type="text" id="reg-otp" maxlength="4" placeholder="0 0 0 0"
+                        style="text-align: center; letter-spacing: 15px; font-weight: 700;">
+                </div>
+
+                <button type="submit" class="btn-auth-submit">
+                    Completar Registro <i class="fa-solid fa-check"></i>
+                </button>
+            </form>
+
+            <footer class="auth-footer">
+                <p><a href="signup.html"><i class="fa-solid fa-arrow-left"></i> Volver al paso anterior</a></p>
+            </footer>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const verifyBtn = document.getElementById('standalone-verify-btn');
+            const otpGroup = document.getElementById('standalone-otp-group');
+            const form = document.getElementById('verify-form');
+
+            verifyBtn.onclick = () => {
+                const phone = document.getElementById('reg-telefono').value;
+                if (phone.length >= 10) {
+                    verifyBtn.innerHTML = '<i class="fa-solid fa-check"></i>';
+                    verifyBtn.style.background = '#2A836B';
+                    otpGroup.classList.remove('hidden');
+                    alert('Código enviado al ' + phone);
+                } else {
+                    alert('Ingresa un número válido');
+                }
+            };
+
+            form.onsubmit = (e) => {
+                e.preventDefault();
+
+                // Final success logic
+                const nombre = localStorage.getItem('temp_name') || 'Usuario';
+                const apellido = localStorage.getItem('temp_surname') || '';
+
+                localStorage.setItem('userName', `${nombre} ${apellido}`);
+                // Clean temp data
+                localStorage.removeItem('temp_name');
+                localStorage.removeItem('temp_surname');
+
+                alert('¡Verificación exitosa! Bienvenido a NexStore.');
+                window.location.href = 'index.html';
+            };
+        });
+    </script>
+</body>
+
+</html>
