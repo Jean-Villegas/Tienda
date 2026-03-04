@@ -4,12 +4,32 @@ import { Ionicons } from '@expo/vector-icons';
 import { theme } from '../utils/theme';
 
 export default function ProfileScreen({ navigation }) {
+<<<<<<< HEAD
+    // IMPORTANTE:
+    // El rol real (incluyendo ADMIN) debe venir desde la base de datos / backend.
+    // Aquí dejamos CLIENTE por defecto solo a nivel de UI, hasta conectar con la BD.
+    const userRole = 'CLIENTE'; // 'CLIENTE' | 'EMPRENDEDOR' | 'ADMIN' (desde backend)
+
+    const baseMenuItems = [
+        { icon: 'storefront-outline', title: 'Panel Emprendedor', route: 'VendorDashboard' },
+        { icon: 'cube-outline', title: 'Mis Pedidos', route: 'Orders' },
+    ];
+
+    const adminItems = userRole === 'ADMIN'
+        ? [{ icon: 'shield-checkmark-outline', title: 'Panel Administrador', route: 'AdminDashboard' }]
+        : [];
+
+    const menuItems = [
+        ...baseMenuItems,
+        ...adminItems,
+=======
     const menuItems = [
         { icon: 'storefront-outline', title: 'Panel Emprendedor', route: 'VendorDashboard' },
         { icon: 'cube-outline', title: 'Mis Pedidos', route: 'Orders' },
         { icon: 'heart-outline', title: 'Favoritos', route: 'Favorites' },
         { icon: 'location-outline', title: 'Direcciones', route: 'Addresses' },
         { icon: 'settings-outline', title: 'Configuración', route: 'Settings' },
+>>>>>>> 8d8bd5bf1d43fb7e6d77f4ac42fd508bce6bb573
     ];
 
     return (
@@ -19,8 +39,19 @@ export default function ProfileScreen({ navigation }) {
                     <View style={styles.profilePic}>
                         <Ionicons name="person" size={50} color={theme.colors.textMuted} />
                     </View>
+<<<<<<< HEAD
+                    <Text style={styles.profileName}>
+                        {userRole === 'ADMIN' ? 'Administrador' : 'Invitado'}
+                    </Text>
+                    <Text style={styles.profileEmail}>
+                        {userRole === 'ADMIN'
+                            ? 'correo-admin-desde-bd@ejemplo.com'
+                            : 'bienvenido@ejemplo.com'}
+                    </Text>
+=======
                     <Text style={styles.profileName}>Invitado</Text>
                     <Text style={styles.profileEmail}>bienvenido@ejemplo.com</Text>
+>>>>>>> 8d8bd5bf1d43fb7e6d77f4ac42fd508bce6bb573
                 </View>
 
                 <View style={styles.menuContainer}>
@@ -30,6 +61,11 @@ export default function ProfileScreen({ navigation }) {
                                 navigation.navigate('VendorDashboard');
                             } else if (item.route === 'Orders') {
                                 navigation.navigate('Orders');
+<<<<<<< HEAD
+                            } else if (item.route === 'AdminDashboard') {
+                                navigation.navigate('AdminDashboard');
+=======
+>>>>>>> 8d8bd5bf1d43fb7e6d77f4ac42fd508bce6bb573
                             }
                         }}>
                             <View style={styles.menuIconContainer}>

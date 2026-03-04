@@ -1,9 +1,55 @@
 import React from 'react';
+<<<<<<< HEAD
+import { View, Text, StyleSheet, SafeAreaView, ScrollView, Alert } from 'react-native';
+import { theme } from '../utils/theme';
+import PrimaryButton from '../components/PrimaryButton';
+
+export default function CartScreen({ navigation }) {
+    // Más adelante estos valores deben venir del backend / contexto de usuario
+    const isVerified = false;
+    const isAdminFlowEnabled = true; // indica que el dinero lo gestionan los administradores
+
+    const handlePay = () => {
+        if (!isVerified) {
+            Alert.alert(
+                'Verifica tu cuenta',
+                'Para completar la compra debes verificar tu cuenta con cédula y teléfono.',
+                [
+                    { text: 'Cancelar', style: 'cancel' },
+                    {
+                        text: 'Ir a verificar',
+                        onPress: () => navigation.navigate('Verify'),
+                    },
+                ],
+            );
+            return;
+        }
+
+        if (isAdminFlowEnabled) {
+            Alert.alert(
+                'Pedido enviado',
+                'Tu pago será recibido por los administradores. Ellos se encargarán de contactar al delivery y pagarle personalmente al emprendedor al final del día.',
+                [
+                    {
+                        text: 'Ver mis pedidos',
+                        onPress: () => navigation.navigate('Orders'),
+                    },
+                    { text: 'Cerrar' },
+                ],
+            );
+            return;
+        }
+
+        Alert.alert('Pago', 'Aquí iría el flujo real de pago.');
+    };
+
+=======
 import { View, Text, StyleSheet, SafeAreaView, ScrollView } from 'react-native';
 import { theme } from '../utils/theme';
 import PrimaryButton from '../components/PrimaryButton';
 
 export default function CartScreen() {
+>>>>>>> 8d8bd5bf1d43fb7e6d77f4ac42fd508bce6bb573
     return (
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.header}>
@@ -26,7 +72,11 @@ export default function CartScreen() {
                     <Text style={styles.totalLabel}>Total</Text>
                     <Text style={styles.totalValue}>$0.00</Text>
                 </View>
+<<<<<<< HEAD
+                <PrimaryButton title="Pagar Ahora" onPress={handlePay} />
+=======
                 <PrimaryButton title="Pagar Ahora" onPress={() => { }} />
+>>>>>>> 8d8bd5bf1d43fb7e6d77f4ac42fd508bce6bb573
             </View>
         </SafeAreaView>
     );
